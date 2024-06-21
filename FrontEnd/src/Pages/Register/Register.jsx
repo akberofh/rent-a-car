@@ -46,7 +46,7 @@ const Register = () => {
   return (
     <section className={styles.container}>
       <div className={styles.auth}>
-        <h1>TODO APP REGISTER</h1>
+        <h1>REGISTER</h1>
         <form onSubmit={handleRegister}>
           <input
             type="text"

@@ -68,7 +68,7 @@ const Profile = () => {
       </div>
       <div className={styles.main}>
         <div className={styles.proContainer}>
-          <h1>Profile</h1>
+          <h1>PROFILE</h1>
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.inputGroup}>
               <label>Name</label>

@@ -39,7 +39,7 @@ const Login = () => {
   return (
     <section className={styles.container}>
       <div className={styles.auth}>
-        <h1>TODO APP</h1>
+        <h1>LOGIN</h1>
         <form onSubmit={handleLogin}>
           <input
             type="text"
