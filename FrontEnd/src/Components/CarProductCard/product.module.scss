@@ -1,5 +1,79 @@
-.card{
-    width: 100%;
-    min-height: 400px;
-    
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$background-color: #f9f9f9;
+$border-color: #ccc;
+$transition-duration: 0.3s;
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: $background-color;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  color: $primary-color;
+  margin-bottom: 20px;
+}
+
+.notelist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.notecard {
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 16px;
+  width: 30%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform $transition-duration ease, box-shadow $transition-duration ease;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    color: $primary-color;
+  }
+
+  p {
+    color: $secondary-color;
+    margin: 0 0 8px;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    max-height: 200px;
+    margin: 8px 0;
+    border-radius: 8px;
+  }
+
+  .deletebutton {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color $transition-duration ease;
+
+    &:hover {
+      background-color: darken(#e74c3c, 10%);
+    }
+  }
 }

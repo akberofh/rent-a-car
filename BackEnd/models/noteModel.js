@@ -11,6 +11,12 @@ const noteModel = mongoose.Schema({
   thumbnail: {
     type: String, // Resmin URL'sini saklamak için String tipinde alan
   },
+  price: {
+    type: String,
+  },
+  distance: {
+    type: String,
+  },
 }, {
   timestamps: true
 });

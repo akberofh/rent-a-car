@@ -1,9 +1,10 @@
 import React from 'react';
 import ProductCard from './ProductCard';
+import './product.scss'
 
 const App = () => {
   return (
-    <div>
+    <div className="container">
       <h1>Notlar Uygulaması</h1>
       <ProductCard />
     </div>
@@ -11,3 +12,4 @@ const App = () => {
 };
 
 export default App;
+
