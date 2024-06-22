@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get('/', getNote)
 
-router.post('/', notePost)
+router.post('/post', notePost)
 
 router.get('/:id', getByIdNote)
 

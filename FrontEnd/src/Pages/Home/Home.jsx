@@ -11,6 +11,7 @@ import Sectionlogo from "../../Components/Sectionlogo/Sectionlogo";
 import Sectioninstall from "../../Components/Sectioninstall/Sectioninstall";
 import Sectionquesition from "../../Components/Sectionquesition/Sectionquesition";
 import Footer from "../../Components/Footer/Footer";
+import ProductCard from "../../Components/CarProductCard/ProductCard";
 
 const Home = () => {
   const [theme, setTheme] = useState(
@@ -41,6 +42,7 @@ const Home = () => {
     <div className="bg-white dark:bg-black dark:text-white text-black overflow-x-hidden">
       <Header theme={theme} setTheme={setTheme} />
       <Hero theme={theme} />
+      <ProductCard/>
        <Sectiontwo/>
        <Sectionthree/>
        <Sectionfre/>

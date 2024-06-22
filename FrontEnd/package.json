@@ -11,6 +11,7 @@
     "aos": "^2.3.4",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
     "emailjs": "^4.0.3",
     "formik": "^2.4.6",
     "js-cookie": "^3.0.5",
@@ -33,6 +34,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:8000",
   "eslintConfig": {
     "extends": [
       "react-app",

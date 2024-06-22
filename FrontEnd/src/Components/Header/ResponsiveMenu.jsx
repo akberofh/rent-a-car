@@ -1,9 +1,8 @@
 import React from "react";
 import { FaUserCircle } from "react-icons/fa";
-
 import { Navlinks } from "./Header";
 
-const ResponsiveMenu = ({ showMenu }) => {
+const ResponsiveMenu = ({ showMenu, user }) => {
   console.log("showMenu", showMenu);
   return (
     <div
@@ -13,16 +12,20 @@ const ResponsiveMenu = ({ showMenu }) => {
     >
       <div className="card">
         <div className="flex items-center justify-start gap-3">
-          <FaUserCircle size={50} />
+          {user && user.photo ? (
+            <img src={user.photo} alt="User Photo" className="w-12 h-12 rounded-full" />
+          ) : (
+            <FaUserCircle size={50} />
+          )}
           <div>
-            <h1>Hello User</h1>
-            <h1 className="text-sm text-slate-500">Premium user</h1>
+            <h1>{user ? user.name : "Hello User"}</h1>
+            <h1 className="text-sm text-slate-500">{user ? user.email : "Premium user"}</h1>
           </div>
         </div>
         <nav className="mt-12">
           <ul className="space-y-4 text-xl">
-            {Navlinks.map((data) => (
-              <li>
+            {Navlinks.map((data, index) => (
+              <li key={index}>
                 <a href={data.link} className="mb-5 inline-block">
                   {data.name}
                 </a>
@@ -33,7 +36,7 @@ const ResponsiveMenu = ({ showMenu }) => {
       </div>
       <div className="footer">
         <h1>
-          Made with ❤ by <a href="https://dilshad-ahmed.github.io/">Dilshad</a>{" "}
+          Made with ❤ by <a href="https://github.com/akberofh">Akberofh</a>{" "}
         </h1>
       </div>
     </div>

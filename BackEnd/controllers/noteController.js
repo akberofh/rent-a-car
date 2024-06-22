@@ -1,51 +1,54 @@
 import NoteModel from "../Models/noteModel.js";
 
-const notePost =
-  ("/",
-  async (req, res) => {
-    const { title, description } = req.body;
+const notePost = async (req, res) => {
+  const { title, description, thumbnail } = req.body;
 
-    try {
-      const note = await NoteModel.create({ title, description });
-      res.json({ note });
-    } catch (error) {
-      console.log(error.message);
+  try {
+    const note = await NoteModel.create({ title, description, thumbnail });
+    res.status(201).json({ note });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const getNote = async (req, res) => {
+  try {
+    const allNotes = await NoteModel.find();
+    res.json({ allNotes });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const getByIdNote = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const getById = await NoteModel.findById(id);
+    if (!getById) {
+      return res.status(404).json({ error: "Note not found" });
     }
-  });
+    res.json({ getById });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
-const getNote =
-  ("/",
-  async (req, res) => {
-    try {
-      const allNotes = await NoteModel.find();
+const deleteById = async (req, res) => {
+  const { id } = req.params;
 
-      res.json({ allNotes });
-    } catch (error) {
-      console.log(error.message);
+  try {
+    const deletedData = await NoteModel.findOneAndDelete({ _id: id });
+    if (!deletedData) {
+      return res.status(404).json({ error: "Note not found" });
     }
-  });
-
-const getByIdNote =
-  ("/:id",
-  async (req, res) => {
-    const { id } = req.params;
-    try {
-      const getById = await NoteModel.findById({ _id: id });
-      res.json({ getById });
-    } catch (error) {
-      console.log(error.message);
-    }
-  });
-
-  const deleteById = ('/:id' , async (req,res) => {
-    const { id } = req.params;
-
-    try {
-        const deletedData = await NoteModel.findOneAndDelete({_id:id})
-        res.json({deletedData})
-    } catch (error) {
-        console.log(error.message);
-    }
-  })
+    res.json({ deletedData });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 export { notePost, getNote, getByIdNote, deleteById };

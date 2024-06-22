@@ -3,9 +3,9 @@ import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
 import ResponsiveMenu from "./ResponsiveMenu";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; // axios'u ekliyoruz
 
 export const Navlinks = [
-
   {
     id: 2,
     name: "ADDTODO",
@@ -43,20 +43,29 @@ export const Navlinks = [
   },
 ];
 
-
-
 const Header = ({ theme, setTheme }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const [user, setUser] = useState(null); // Kullanıcı bilgileri için state ekliyoruz
+  const navigate = useNavigate();
 
-  const navgate = useNavigate()
-
-const home = () => {
-  navgate("/")
-}
+  const home = () => {
+    navigate("/");
+  };
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
+
+  // useEffect ile API çağrısını yapıyoruz
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/user') // Kullanıcı bilgilerini çeken API çağrısı
+      .then(response => {
+        setUser(response.data);
+      })
+      .catch(error => {
+        console.error('Kullanıcı bilgileri alınamadı:', error);
+      });
+  }, []);
 
   useEffect(() => {
     if (showMenu) {
@@ -130,7 +139,7 @@ const home = () => {
           </div>
         </div>
       </div>
-      <ResponsiveMenu showMenu={showMenu} />
+      <ResponsiveMenu showMenu={showMenu} user={user} /> {/* user propunu ekliyoruz */}
     </div>
   );
 };
