@@ -9,6 +9,12 @@ import PrivateRoute from './PrivateRoute'
 import Register from '../Pages/Register/Register'
 import AboutCard from '../Pages/About/AboutCard'
 import ContactUsCompliment from './ContactUs/ContactUsCompliment'
+import BmwCatagory from '../Catagory/BmwCatagory'
+import ChevroletCatagory from '../Catagory/ChevroletCatagory'
+import LadaCatagory from '../Catagory/LadaCatagory'
+import NissanCatagory from '../Catagory/NissanCatagory'
+import ToyotaCatagory from '../Catagory/ToyotaCatagory'
+import MercedesCatagory from '../Catagory/MercedesCatagory'
 
 const Router = () => {
   return (
@@ -23,6 +29,12 @@ const Router = () => {
           <Route path="" element={<PrivateRoute/>}  />
           <Route path="/about" element={<AboutCard/>} /> 
           <Route path='/contact' element={<ContactUsCompliment/>} />
+          <Route path='/bmw' element={<BmwCatagory/>} />
+          <Route path='/chevrolet' element={<ChevroletCatagory/>} />
+          <Route path='/lada' element={<LadaCatagory/>} />
+          <Route path='/nissan' element={<NissanCatagory/>} />
+          <Route path='/toyota' element={<ToyotaCatagory/>} />
+          <Route path='/mercedes' element={<MercedesCatagory/>} />
   </Routes>
   </BrowserRouter>
   )

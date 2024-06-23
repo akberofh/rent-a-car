@@ -1,5 +1,6 @@
 import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
+import userModel from '../models/userModel.js'
 
 const authUser = async (req, res) => {
   try {
@@ -50,6 +51,15 @@ const registerUser = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+};
+const getUser = async (req, res) => {
+  try {
+    const allUsers = await userModel.find();
+    res.json({ allUsers });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -114,4 +124,5 @@ export {
   logoutUser,
   getUserProfile,
   updateUserProfile,
+  getUser,
 };

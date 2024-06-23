@@ -3,7 +3,7 @@ import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
 import ResponsiveMenu from "./ResponsiveMenu";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"; // axios'u ekliyoruz
+import axios from "axios";
 
 export const Navlinks = [
   {
@@ -45,7 +45,7 @@ export const Navlinks = [
 
 const Header = ({ theme, setTheme }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const [user, setUser] = useState(null); // Kullanıcı bilgileri için state ekliyoruz
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   const home = () => {
@@ -56,11 +56,10 @@ const Header = ({ theme, setTheme }) => {
     setShowMenu(!showMenu);
   };
 
-  // useEffect ile API çağrısını yapıyoruz
   useEffect(() => {
-    axios.get('http://localhost:8000/api/user') // Kullanıcı bilgilerini çeken API çağrısı
+    axios.get('http://localhost:8000/api/users')
       .then(response => {
-        setUser(response.data);
+        setUser(response.data.allUsers);
       })
       .catch(error => {
         console.error('Kullanıcı bilgileri alınamadı:', error);
@@ -101,12 +100,12 @@ const Header = ({ theme, setTheme }) => {
               {theme === "dark" ? (
                 <BiSolidSun
                   onClick={() => setTheme("light")}
-                  className="text-2xl"
+                  className="text-2xl cursor-pointer"
                 />
               ) : (
                 <BiSolidMoon
                   onClick={() => setTheme("dark")}
-                  className="text-2xl"
+                  className="text-2xl cursor-pointer"
                 />
               )}
             </ul>
@@ -115,12 +114,12 @@ const Header = ({ theme, setTheme }) => {
             {theme === "dark" ? (
               <BiSolidSun
                 onClick={() => setTheme("light")}
-                className="text-2xl"
+                className="text-2xl cursor-pointer"
               />
             ) : (
               <BiSolidMoon
                 onClick={() => setTheme("dark")}
-                className="text-2xl"
+                className="text-2xl cursor-pointer"
               />
             )}
             {showMenu ? (
@@ -139,7 +138,7 @@ const Header = ({ theme, setTheme }) => {
           </div>
         </div>
       </div>
-      <ResponsiveMenu showMenu={showMenu} user={user} /> {/* user propunu ekliyoruz */}
+      <ResponsiveMenu showMenu={showMenu} user={user} />
     </div>
   );
 };

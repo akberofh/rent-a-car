@@ -1,10 +1,10 @@
 import NoteModel from "../Models/noteModel.js";
 
 const notePost = async (req, res) => {
-  const { title, description, thumbnail, price,distance } = req.body;
+  const { title, description, thumbnail, price,distance ,catagory} = req.body;
 
   try {
-    const note = await NoteModel.create({ title, description, thumbnail,price ,distance});
+    const note = await NoteModel.create({ title, description, thumbnail,price ,distance ,catagory});
     res.status(201).json({ note });
   } catch (error) {
     console.error(error);

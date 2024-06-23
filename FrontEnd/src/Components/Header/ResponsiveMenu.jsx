@@ -4,6 +4,8 @@ import { Navlinks } from "./Header";
 
 const ResponsiveMenu = ({ showMenu, user }) => {
   console.log("showMenu", showMenu);
+  console.log("user", user);
+
   return (
     <div
       className={`${
@@ -31,6 +33,19 @@ const ResponsiveMenu = ({ showMenu, user }) => {
                 </a>
               </li>
             ))}
+            {user && (
+              <li className="mt-4">
+                <h2 className="font-semibold text-lg">Kullanıcı Bilgileri</h2>
+                <ul className="pl-4">
+                  <li>
+                    <strong>Adı:</strong> {user.name}
+                  </li>
+                  <li>
+                    <strong>E-posta:</strong> {user.email}
+                  </li>
+                </ul>
+              </li>
+            )}
           </ul>
         </nav>
       </div>

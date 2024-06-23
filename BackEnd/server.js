@@ -6,6 +6,7 @@ import noteRoutes from './routes/noteRoute.js'
 import connectDB from './config/db.js';
 import cookieParser from 'cookie-parser';
 import products from  './routes/productRouter.js'
+
 import cors from 'cors';
 
 dotenv.config();
@@ -25,6 +26,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/todos', todoRoutes);
 app.use('/api/notes', noteRoutes);
 app.use('/api/products', products);
+
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

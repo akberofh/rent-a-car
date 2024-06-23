@@ -12,6 +12,7 @@ import Sectioninstall from "../../Components/Sectioninstall/Sectioninstall";
 import Sectionquesition from "../../Components/Sectionquesition/Sectionquesition";
 import Footer from "../../Components/Footer/Footer";
 import ProductCard from "../../Components/CarProductCard/ProductCard";
+import BasketProduct from "../BasketCar/BasketProduct";
 
 const Home = () => {
   const [theme, setTheme] = useState(
@@ -43,6 +44,7 @@ const Home = () => {
       <Header theme={theme} setTheme={setTheme} />
       <Hero theme={theme} />
       <ProductCard/>
+      <BasketProduct/>
        <Sectiontwo/>
        <Sectionthree/>
        <Sectionfre/>

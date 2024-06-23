@@ -9,12 +9,15 @@ const noteModel = mongoose.Schema({
     type: String,
   },
   thumbnail: {
-    type: String, // Resmin URL'sini saklamak için String tipinde alan
+    type: String,
   },
   price: {
     type: String,
   },
   distance: {
+    type: String,
+  },
+  catagory: {
     type: String,
   },
 }, {

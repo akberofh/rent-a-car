@@ -1,11 +1,10 @@
 import React from 'react';
 import ProductCard from './ProductCard';
-import './product.scss'
+// import './product.scss'
 
 const App = () => {
   return (
-    <div className="container">
-      <h1>Notlar Uygulaması</h1>
+    <div style={{width:"100%",}} className="container">
       <ProductCard />
     </div>
   );
