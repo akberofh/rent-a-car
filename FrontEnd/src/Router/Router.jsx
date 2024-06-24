@@ -15,7 +15,7 @@ import LadaCatagory from '../Catagory/LadaCatagory'
 import NissanCatagory from '../Catagory/NissanCatagory'
 import ToyotaCatagory from '../Catagory/ToyotaCatagory'
 import MercedesCatagory from '../Catagory/MercedesCatagory'
-import Chat from '../Chat/Chat'
+import Chat from '../ChatBot/Chat'
 import Detalbmw from '../Catagory/Detailpage/Detalbmw'
 
 const Router = () => {
@@ -30,7 +30,7 @@ const Router = () => {
         <Route path="/addtodo" element={<AddNewTodo />} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="" element={<PrivateRoute/>}  />
-          <Route path=".chat" element={<Chat/>}  />
+          <Route path="/chat" element={<Chat/>}  />
           <Route path="/about" element={<AboutCard/>} /> 
           <Route path='/contact' element={<ContactUsCompliment/>} />
           <Route path='/bmw' element={<BmwCatagory/>} />

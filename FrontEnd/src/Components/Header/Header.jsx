@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
 import ResponsiveMenu from "./ResponsiveMenu";
-import Chat from '../../Chat/Chat';  // Chat bileşenini import ediyoruz
+import Chat from '../../Chat/Chate';  // Chat bileşenini import ediyoruz
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 

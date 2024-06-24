@@ -13,6 +13,7 @@ const authUser = async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
+        photo: user.photo,
       });
     } else {
       res.status(400).json({ message: 'Email ya da parola hatalı' });
@@ -24,7 +25,7 @@ const authUser = async (req, res) => {
 
 const registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password,photo } = req.body;
 
     const userExists = await User.findOne({ email });
 
@@ -37,6 +38,7 @@ const registerUser = async (req, res) => {
       name,
       email,
       password,
+      photo,
     });
 
     if (user) {
@@ -45,6 +47,7 @@ const registerUser = async (req, res) => {
         _id: user._id,
         email: user.email,
         name: user.name,
+        photo: user.photo,
       });
     } else {
       res.status(400).json({ message: "User not added" });
@@ -82,6 +85,7 @@ const getUserProfile = async (req, res) => {
         _id: req.user._id,
         name: req.user.name,
         email: req.user.email,
+        photo: req.user.photo,
       });
     } else {
       res.status(404).json({ message: 'Kullanıcı Bulunamadı' });
@@ -98,6 +102,7 @@ const updateUserProfile = async (req, res) => {
     if (user) {
       user.name = req.body.name || user.name;
       user.email = req.body.email || user.email;
+      user.photo = req.body.photo || user.photo;
 
       if (req.body.password) {
         user.password = req.body.password;
@@ -109,6 +114,7 @@ const updateUserProfile = async (req, res) => {
         _id: updatedUser._id,
         name: updatedUser.name,
         email: updatedUser.email,
+        photo: updatedUser.photo,
       });
     } else {
       res.status(404).json({ message: 'Kullanıcı Bulunamadı' });
