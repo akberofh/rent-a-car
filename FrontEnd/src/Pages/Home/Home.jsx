@@ -44,7 +44,7 @@ const Home = () => {
   }, []);
 
   const {userInfo} = useSelector((state) => state.auth)
-  console.log("usersss" + userInfo.email);
+
 
 
   return (

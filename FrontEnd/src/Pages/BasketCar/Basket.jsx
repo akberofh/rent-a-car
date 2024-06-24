@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import 'aos/dist/aos.css'; 
 import AOS from 'aos'; 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const Basket = () => {
   const [notes, setNotes] = useState([]);

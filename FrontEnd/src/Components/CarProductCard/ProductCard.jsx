@@ -6,10 +6,9 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import './style.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { FaHeart } from 'react-icons/fa';
 
-const Aples = () => {
+const ProductCard = () => {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
@@ -71,7 +70,7 @@ const Aples = () => {
     >
       {notes.map((note, index) => (
         <SwiperSlide key={note._id}>
-          <div className="space-y-3 p-3 relative group flex flex-col items-center overflow-hidden bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg">
+          <div className="p-3 relative group flex flex-col items-center overflow-hidden bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg">
             <div className="w-full h-[250px] relative overflow-hidden rounded-lg">
               {note.thumbnail && (
                 <img
@@ -88,7 +87,7 @@ const Aples = () => {
                 Sepete Ekle
               </button>
             </div>
-            <div className="space-y-2 w-full text-center">
+            <div className="space-y-2 w-full text-center mt-3">
               <h1 className="text-primary dark:text-primary-light font-semibold text-lg">{note.title}</h1>
               <div className="flex justify-center items-center text-xl font-semibold space-x-2 text-gray-900 dark:text-gray-100">
                 <p>${note.price}</p>
@@ -102,7 +101,7 @@ const Aples = () => {
               onClick={() => addToWishlist(note._id)}
               className="group opacity-0 hover:opacity-100 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full p-2 hover:bg-gray-200 dark:hover:bg-gray-600 transition duration-300 absolute top-2 right-2"
             >
-              <FontAwesomeIcon icon={faHeart} size="lg" />
+              <FaHeart size="1.5em" />
             </button>
           </div>
         </SwiperSlide>
@@ -111,4 +110,4 @@ const Aples = () => {
   );
 };
 
-export default Aples;
+export default ProductCard;
