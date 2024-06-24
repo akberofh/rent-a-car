@@ -14,6 +14,7 @@ import Footer from "../../Components/Footer/Footer";
 import ProductCard from "../../Components/CarProductCard/ProductCard";
 import BasketProduct from "../BasketCar/BasketProduct";
 import { useSelector } from "react-redux";
+import CarProduct from "../../Components/CarProductCard/CarProduct";
 
 const Home = () => {
   const [theme, setTheme] = useState(
@@ -49,8 +50,8 @@ const Home = () => {
     <div className="bg-white dark:bg-black dark:text-white text-black overflow-x-hidden">
       <Header theme={theme} setTheme={setTheme} />
       <Hero theme={theme} />
-      <ProductCard/>
-      <BasketProduct/>
+      <CarProduct/>
+      {/* <BasketProduct/> */}
        <Sectiontwo/>
        <Sectionthree/>
        <Sectionfre/>

@@ -16,6 +16,11 @@ export const Navlinks = [
   },
   {
     id: 2,
+    name: "CHAT",
+    link: "/chat",
+  },
+  {
+    id: 2,
     name: "DASHBOARD",
     link: "/dashboard",
   },
@@ -49,7 +54,7 @@ export const Navlinks = [
 const Header = ({ theme, setTheme }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [user, setUser] = useState(null);
-  const [showChat, setShowChat] = useState(false); // Chat penceresini kontrol etmek için state
+  
   const navigate = useNavigate();
 
   const home = () => {
@@ -60,9 +65,7 @@ const Header = ({ theme, setTheme }) => {
     setShowMenu(!showMenu);
   };
 
-  const toggleChat = () => {
-    setShowChat(!showChat); // Chat penceresini açmak veya kapatmak için fonksiyon
-  };
+ 
 
   useEffect(() => {
     const token = localStorage.getItem("token"); // Local storage'dan token'ı alıyoruz
@@ -149,11 +152,11 @@ const Header = ({ theme, setTheme }) => {
               />
             )}
           </div>
-          <button onClick={toggleChat} className="ml-4">Online Destek</button> {/* Chat butonunu ekliyoruz */}
+          
         </div>
       </div>
       <ResponsiveMenu showMenu={showMenu} user={user} />
-      {showChat && <Chat />} {/* Chat penceresini göstermek için */}
+       {/* Chat penceresini göstermek için */}
     </div>
   );
 };
