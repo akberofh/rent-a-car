@@ -13,6 +13,7 @@ import Sectionquesition from "../../Components/Sectionquesition/Sectionquesition
 import Footer from "../../Components/Footer/Footer";
 import ProductCard from "../../Components/CarProductCard/ProductCard";
 import BasketProduct from "../BasketCar/BasketProduct";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const [theme, setTheme] = useState(
@@ -39,6 +40,11 @@ const Home = () => {
     });
     AOS.refresh();
   }, []);
+
+  const {userInfo} = useSelector((state) => state.auth)
+  console.log("usersss" + userInfo.email);
+
+
   return (
     <div className="bg-white dark:bg-black dark:text-white text-black overflow-x-hidden">
       <Header theme={theme} setTheme={setTheme} />

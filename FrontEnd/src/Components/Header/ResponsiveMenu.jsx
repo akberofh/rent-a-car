@@ -1,10 +1,12 @@
 import React from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Navlinks } from "./Header";
+import { useSelector } from "react-redux";
 
-const ResponsiveMenu = ({ showMenu, user }) => {
-  console.log("showMenu", showMenu);
-  console.log("user", user);
+const ResponsiveMenu = ({ showMenu }) => {
+
+  const {userInfo} = useSelector((state) => state.auth)
+
 
   return (
     <div
@@ -14,14 +16,14 @@ const ResponsiveMenu = ({ showMenu, user }) => {
     >
       <div className="card">
         <div className="flex items-center justify-start gap-3">
-          {user && user.photo ? (
-            <img src={user.photo} alt="User Photo" className="w-12 h-12 rounded-full" />
+          {userInfo && userInfo.photo ? (
+            <img src={userInfo.photo} alt="User Photo" className="w-12 h-12 rounded-full" />
           ) : (
             <FaUserCircle size={50} />
           )}
           <div>
-            <h1>{user ? user.name : "Hello User"}</h1>
-            <h1 className="text-sm text-slate-500">{user ? user.email : "Premium user"}</h1>
+            <h1>{userInfo ? userInfo.name : "Hello User"}</h1>
+            <h1 className="text-sm text-slate-500">{userInfo ? userInfo.email : "Premium user"}</h1>
           </div>
         </div>
         <nav className="mt-12">
@@ -33,15 +35,15 @@ const ResponsiveMenu = ({ showMenu, user }) => {
                 </a>
               </li>
             ))}
-            {user && (
+            {userInfo && (
               <li className="mt-4">
                 <h2 className="font-semibold text-lg">Kullanıcı Bilgileri</h2>
                 <ul className="pl-4">
                   <li>
-                    <strong>Adı:</strong> {user.name}
+                    <strong>Adı:</strong> {userInfo.name}
                   </li>
                   <li>
-                    <strong>E-posta:</strong> {user.email}
+                    <strong>E-posta:</strong> {userInfo.email}
                   </li>
                 </ul>
               </li>

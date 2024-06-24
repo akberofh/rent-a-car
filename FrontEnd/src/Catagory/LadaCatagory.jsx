@@ -21,14 +21,16 @@ const LadaCatagory = () => {
                 const filteredNotes = res.data.allNotes.filter(note => note.catagory === 'LADA');
                 setCharms(filteredNotes);
                 setLoading(false);
+                
             } catch (error) {
                 setError(error.message);
                 setLoading(false);
             }
         };
-
+        
         fetchNotes();
     }, []);
+
 
     if (loading) {
         return <div className="flex justify-center items-center h-screen">Yükleniyor...</div>;

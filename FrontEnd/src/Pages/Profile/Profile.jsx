@@ -60,6 +60,7 @@ const Profile = () => {
     }
   }, [userInfo]);
 
+
   return (
     <div className={styles.container}>
       <div className={styles.headBox}>
