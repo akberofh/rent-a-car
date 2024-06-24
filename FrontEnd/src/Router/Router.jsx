@@ -16,6 +16,7 @@ import NissanCatagory from '../Catagory/NissanCatagory'
 import ToyotaCatagory from '../Catagory/ToyotaCatagory'
 import MercedesCatagory from '../Catagory/MercedesCatagory'
 import Chat from '../Chat/Chat'
+import Detalbmw from '../Catagory/Detailpage/Detalbmw'
 
 const Router = () => {
   return (
@@ -24,6 +25,7 @@ const Router = () => {
     <Route path='/' element={<Home/>} />
     <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/detalbmw" element={<Detalbmw />} />
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/addtodo" element={<AddNewTodo />} />
           <Route path="/profile" element={<Profile/>} />
