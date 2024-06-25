@@ -36,7 +36,7 @@ const ProductCard = () => {
     try {
       const response = await axios.post(
         'http://localhost:8000/api/products/products',
-        { product_id, user_id: userInfo.id }, // user_id'yi de gönderiyoruz
+        { product_id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
       console.log(`Sepete eklendi: ${product_id}`, response.data);
