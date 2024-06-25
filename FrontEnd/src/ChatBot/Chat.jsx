@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
 import 'tailwindcss/tailwind.css'; // Tailwind CSS dosyasını ekledim
 
-const theme = {
+const lightTheme = {
   background: '#f5f8fb',
   fontFamily: 'Arial, Helvetica, sans-serif',
   headerBgColor: '#5C6BC0',
@@ -15,10 +15,33 @@ const theme = {
   userFontColor: '#4a4a4a',
 };
 
-function Chat() {
+const darkTheme = {
+  background: '#1a202c',
+  fontFamily: 'Arial, Helvetica, sans-serif',
+  headerBgColor: '#2d3748',
+  headerFontColor: '#fff',
+  headerFontSize: '15px',
+  botBubbleColor: '#2d3748',
+  botFontColor: '#fff',
+  userBubbleColor: '#fff',
+  userFontColor: '#4a4a4a',
+};
+
+function Chat({ theme }) {
+  useEffect(() => {
+    const element = document.documentElement;
+    if (theme === 'dark') {
+      element.classList.add('dark');
+    } else {
+      element.classList.remove('dark');
+    }
+  }, [theme]);
+
+  const selectedTheme = theme === 'dark' ? darkTheme : lightTheme;
+
   return (
-    <ThemeProvider theme={theme}>
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+    <ThemeProvider theme={selectedTheme}>
+      <div className="min-h-screen bg-gray-100 dark:bg-black dark:text-white flex items-center justify-center">
         <ChatBot
           steps={[
             {

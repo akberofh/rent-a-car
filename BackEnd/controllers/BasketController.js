@@ -1,4 +1,17 @@
 // BasketController.js
+import BasketModel from "../models/BasketModel";
+
+const basketPost = async (req, res) => {
+  const { createdAt} = req.body;
+
+  try {
+    const note = await BasketModel.create({ createdAt});
+    res.status(201).json({ note });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 const addToBasket = async (req, res) => {
   try {
@@ -27,4 +40,4 @@ const getBasket = async (req, res) => {
   }
 };
 
-module.exports = { addToBasket, removeFromBasket, getBasket };
+module.exports = { addToBasket, removeFromBasket, getBasket, basketPost };

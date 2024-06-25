@@ -7,9 +7,11 @@ import 'swiper/css/pagination';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import './style.css';
 import { FaHeart } from 'react-icons/fa';
+import { useSelector } from "react-redux";
 
 const ProductCard = () => {
   const [notes, setNotes] = useState([]);
+  const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -24,7 +26,7 @@ const ProductCard = () => {
     fetchNotes();
   }, []);
 
-  const addToBasket = async (id) => {
+  const addToBasket = async (product_id) => {
     const token = localStorage.getItem('token');
     if (!token) {
       console.error('Kullanıcı oturum açmamış');
@@ -32,11 +34,12 @@ const ProductCard = () => {
     }
 
     try {
-      await axios.post(`http://localhost:8000/api/basket`, 
-        { noteId: id }, 
+      const response = await axios.post(
+        'http://localhost:8000/api/products/products',
+        { product_id, user_id: userInfo.id }, // user_id'yi de gönderiyoruz
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      console.log(`Sepete eklendi: ${id}`);
+      console.log(`Sepete eklendi: ${product_id}`, response.data);
     } catch (error) {
       console.error('Sepete eklerken hata oluştu:', error);
     }
@@ -68,7 +71,7 @@ const ProductCard = () => {
       modules={[EffectCoverflow, Pagination]}
       className="mySwiper"
     >
-      {notes.map((note, index) => (
+      {notes.map((note) => (
         <SwiperSlide key={note._id}>
           <div className="p-3 relative group flex flex-col items-center overflow-hidden bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg">
             <div className="w-full h-[250px] relative overflow-hidden rounded-lg">

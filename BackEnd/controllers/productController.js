@@ -2,13 +2,59 @@ import Product from "../models/productModel.js";
 
 const addProduct = async (req, res) => {
   try {
-    const { title, price } = req.body;
+    const { title,product_id, description, thumbnail, price,distance ,catagory } = req.body;
     const product = await Product.create({
       title,
       price,
+      description, thumbnail,distance ,catagory,product_id,
     });
+    if (product) {
+      generateToken(res, product._id);
+      res.status(201).json({
+        _id: product._id,
+        email: product.email,
+        name: product.name,
+        photo: product.photo,
+      });
+    } else {
+      res.status(400).json({ message: "User not added" });
+    }
 
     res.status(201).json(product); // Oluşturulan ürünü JSON formatında yanıtla
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const registerUser = async (req, res) => {
+  try {
+    const { name, email, password,photo } = req.body;
+
+    const userExists = await User.findOne({ email });
+
+    if (userExists) {
+      res.status(400).json({ message: "User already exists" });
+      return;
+    }
+
+    const user = await User.create({
+      name,
+      email,
+      password,
+      photo,
+    });
+
+    if (user) {
+      generateToken(res, user._id);
+      res.status(201).json({
+        _id: user._id,
+        email: user.email,
+        name: user.name,
+        photo: user.photo,
+      });
+    } else {
+      res.status(400).json({ message: "User not added" });
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

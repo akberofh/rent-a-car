@@ -14,6 +14,18 @@ const productSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
+    description: {
+      type: String,
+    },
+    thumbnail: {
+      type: String,
+    },
+    distance: {
+      type: String,
+    },
+    catagory: {
+      type: String,
+    },
   },
   {
     timestamps: true,
